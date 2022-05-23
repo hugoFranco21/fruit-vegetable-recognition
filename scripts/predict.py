@@ -31,7 +31,7 @@ def main():
     infile = open('labels.pkl', 'rb')
     labels = pickle.load(infile)
     labels = dict((v,k) for k,v in labels.items())
-    #print(labels)
+    print(labels)
     infile.close()
     flag = True
     while flag:
@@ -44,6 +44,7 @@ def main():
         img = image.load_img(img_path + path + '.jpg', target_size=(224,224))
         img_tensor = image.img_to_array(img)
         img_tensor = np.expand_dims(img_tensor, axis = 0)
+        img_tensor /= 255
         #img_tensor = np.expand_dims(img_tensor, axis = 0)
         #img_tensor /= 255.
 
